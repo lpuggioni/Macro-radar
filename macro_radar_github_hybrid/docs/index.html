@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Macro Radar — GitHub Hybrid MVP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">MR</div>
+      <div>
+        <div class="title">Macro Radar — Hybrid (GitHub Pages + Data Sync)</div>
+        <div class="subtitle">EUR-based • Global DM+EM • aggiornamenti automatici (GitHub Actions) + polling in pagina</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="control">
+        <span>Time range</span>
+        <select id="timeRange">
+          <option value="1d">1D</option>
+          <option value="7d" selected>7D</option>
+          <option value="30d">1M</option>
+        </select>
+      </label>
+
+      <label class="control">
+        <span>News</span>
+        <select id="newsCategory">
+          <option value="all" selected>Tutte</option>
+          <option value="central_banks">Banche centrali</option>
+          <option value="macro_data">Macro dati</option>
+          <option value="rates">Tassi</option>
+          <option value="fx">FX</option>
+          <option value="credit">Credito</option>
+          <option value="equity">Azionario</option>
+          <option value="commodities">Materie prime</option>
+          <option value="crypto">Crypto</option>
+          <option value="regulation">Regolatorio</option>
+        </select>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" id="marketMovingOnly" />
+        <span>Solo market-moving</span>
+      </label>
+
+      <button id="refreshBtn" class="btn">Aggiorna ora</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="panel tiles">
+      <div class="panel-header">
+        <h2>Market Tiles</h2>
+        <div class="asof" id="tilesAsof">—</div>
+      </div>
+      <div class="tiles-grid" id="tilesGrid"></div>
+      <div class="hint">
+        Dati caricati da <code>docs/data/snapshot.json</code> e aggiornati automaticamente via GitHub Actions.
+        (Se stai aprendo il file da <code>file://</code>, alcuni browser bloccano le fetch: usa GitHub Pages o un server locale.)
+      </div>
+    </section>
+
+    <section class="panel monitoring">
+      <div class="panel-header">
+        <h2>Monitoring Drawer</h2>
+        <div class="asof" id="drawerAsof">—</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="curves">Curves</button>
+        <button class="tab" data-tab="fx">FX Heatmap</button>
+        <button class="tab" data-tab="credit">Credit Stress</button>
+      </div>
+
+      <div class="tabbody active" id="tab-curves">
+        <div class="split">
+          <div class="card">
+            <div class="card-title">EU 10Y — DE/IT/ES/FR (mensile)</div>
+            <canvas id="chartEU10Y" height="180"></canvas>
+            <div class="hint">Fonte: Eurostat. Aggiornamento automatico via Actions.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Spread IT–DE (mensile)</div>
+            <canvas id="chartSpread" height="180"></canvas>
+            <div class="hint">Calcolato (IT 10Y − DE 10Y) in pipeline dati.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabbody" id="tab-fx">
+        <div class="card">
+          <div class="card-title">Top Movers EM vs EUR (FX-only)</div>
+          <div class="table-wrap">
+            <table class="table" id="fxTable">
+              <thead><tr><th>Valuta</th><th>Pair</th><th>Ultimo</th><th>Δ 7D</th><th>As-of</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="hint">
+            Caricato da <code>docs/data/fx_top_movers.json</code> (pipeline).
+          </div>
+        </div>
+      </div>
+
+      <div class="tabbody" id="tab-credit">
+        <div class="card">
+          <div class="card-title">Credit Stress (opzionale con FRED)</div>
+          <div id="creditBlock" class="muted">Caricamento…</div>
+          <div class="hint">
+            Se imposti un secret <code>FRED_API_KEY</code> nel repo, la pipeline scarica le serie e riempie <code>docs/data/credit.json</code>.
+            Altrimenti la sezione viene elencata in “Dati rimossi”.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel news">
+      <div class="panel-header">
+        <h2>Newsflow (tag + filtro)</h2>
+        <div class="asof" id="newsAsof">—</div>
+      </div>
+      <div id="newsList" class="news-list"></div>
+      <div class="hint">
+        News via GDELT (CORS-friendly) + tagging rule-based. (Aggiornamento live direttamente dal browser.)
+      </div>
+    </section>
+
+    <section class="panel removed">
+      <div class="panel-header">
+        <h2>Dati rimossi / non disponibili</h2>
+        <div class="asof" id="removedAsof">—</div>
+      </div>
+      <ul id="removedList" class="removed-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div id="statusLine">—</div>
+    <div class="small">Hybrid: GitHub Pages ospita la UI; GitHub Actions aggiorna i JSON dati (minimo CORS / più funzionalità rispetto a file locale).</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
