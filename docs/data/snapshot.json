@@ -1,28 +1,24 @@
 {
-  "generated_at": "2026-03-02T19:32:25.540838Z",
-  "asof_data": null,
+  "generated_at": "2026-03-02T20:40:15Z",
+  "asof_data": "2026-01",
   "tiles": [
     {
       "label": "DE 10Y (mensile)",
       "value": null,
       "unit": "pct",
-      "source": "Eurostat",
-      "deltaPct": null
+      "source": "Eurostat"
     },
     {
       "label": "IT 10Y (mensile)",
       "value": null,
       "unit": "pct",
-      "source": "Eurostat",
-      "deltaPct": null
+      "source": "Eurostat"
     },
     {
       "label": "Spread IT–DE (mensile)",
       "value": null,
       "unit": "pct",
-      "source": "Eurostat",
-      "deltaPct": null
+      "source": "Eurostat"
     }
-  ],
-  "note": "Placeholder: verrà popolato dal workflow Actions."
+  ]
 }
