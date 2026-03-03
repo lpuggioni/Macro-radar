@@ -144,3 +144,4 @@ a:hover{text-decoration:underline}
 }
 .muted{color:var(--muted); font-size:12px; line-height:1.5}
 .small{font-size:11px}
+html, body { overflow-x: hidden; }
