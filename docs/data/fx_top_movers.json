@@ -1,5 +1,90 @@
 {
-  "generated_at": "2026-10-21T01:01:33Z",
-  "rows": [],
-  "note": "ECB FX download failed"
+  "generated_at": "2026-10-21T06:03:57Z",
+  "rows": [
+    {
+      "ccy": "USD",
+      "pair": "USD/EUR",
+      "last": 1.1215,
+      "asof": "2026-10-20",
+      "chg7d": 0.08031411743707473
+    },
+    {
+      "ccy": "GBP",
+      "pair": "GBP/EUR",
+      "last": 0.84028,
+      "asof": "2026-10-20",
+      "chg7d": -0.8671236270542559
+    },
+    {
+      "ccy": "JPY",
+      "pair": "JPY/EUR",
+      "last": 177.34,
+      "asof": "2026-10-20",
+      "chg7d": 0.0
+    },
+    {
+      "ccy": "BRL",
+      "pair": "BRL/EUR",
+      "last": 5.6339,
+      "asof": "2026-10-20",
+      "chg7d": 0.4510929643761319
+    },
+    {
+      "ccy": "MXN",
+      "pair": "MXN/EUR",
+      "last": 20.7719,
+      "asof": "2026-10-20",
+      "chg7d": 1.8480019612650223
+    },
+    {
+      "ccy": "ZAR",
+      "pair": "ZAR/EUR",
+      "last": 18.4769,
+      "asof": "2026-10-20",
+      "chg7d": -0.27041614940357395
+    },
+    {
+      "ccy": "TRY",
+      "pair": "TRY/EUR",
+      "last": 55.6009,
+      "asof": "2026-10-20",
+      "chg7d": 0.9030312159163056
+    },
+    {
+      "ccy": "INR",
+      "pair": "INR/EUR",
+      "last": 106.459,
+      "asof": "2026-10-20",
+      "chg7d": -1.787419335495155
+    },
+    {
+      "ccy": "IDR",
+      "pair": "IDR/EUR",
+      "last": 20170.57,
+      "asof": "2026-10-20",
+      "chg7d": 0.6669182020807574
+    },
+    {
+      "ccy": "PLN",
+      "pair": "PLN/EUR",
+      "last": 4.3768,
+      "asof": "2026-10-20",
+      "chg7d": -0.15284589939544846
+    },
+    {
+      "ccy": "HUF",
+      "pair": "HUF/EUR",
+      "last": 364.68,
+      "asof": "2026-10-20",
+      "chg7d": -0.10956502684342784
+    },
+    {
+      "ccy": "CZK",
+      "pair": "CZK/EUR",
+      "last": 24.329,
+      "asof": "2026-10-20",
+      "chg7d": -0.1641429685255824
+    }
+  ],
+  "source": "ECB EXR (SDMX-CSV)"
 }
